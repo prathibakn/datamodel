@@ -1,109 +1,59 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Bootstrap 101 Template</title>
-    <link href="../css/bootstrap.css" rel="stylesheet" media="screen">
-    <link href="../css/docs.css" rel="stylesheet" media="screen">
-  </head>
-  <body>
-    <header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
-      <div class="container">
-      </div>
-    </header>
-    <div class="container bs-docs-container">
-      <div class="row">
-        <div class="col-md-3">
-          <div class="bs-sidebar hidden-print affix">
-            <ul class="nav bs-sidenav">
-              <li class="active">
-                <a>Phase1</a>
-                <ul class="nav">
-                  <li class>
-                    <a>Overview</a>
-                  </li>
-                  <li>
-                    <a>Details</a>
-                  </li>
-                  <li>
-                    <a>Something</a>
-                  </li>
-                  <li>
-                    <a>Something else</a>
-                  </li>
-                </ul>
+<div class="container bs-docs-container"  ng-controller="EditCtrl">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="bs-sidebar hidden-print affix">
+        <ul class="nav bs-sidenav">
+          <li class="active">
+            <a>Phase1</a>
+            <ul class="nav">
+              <li>
+                <a ng-click="template='views/overview.html'">Overview</a>
               </li>
               <li>
-                <a>Phase2</a>
-                <ul class="nav">
-                  <li>
-                    <a>Overview</a>
-                  </li>
-                  <li>
-                    <a>Details</a>
-                  </li>
-                  <li>
-                    <a>Something</a>
-                  </li>
-                  <li>
-                    <a>Something else</a>
-                  </li>
-                </ul>
+                <a ng-click="template='views/attributes.html'">Attributes</a>
+              </li>
+            </ul>
+          </li>
+          <li class="active">
+            <a>Phase2</a>
+            <ul class="nav">
+              <li>
+                <a ng-click="template='views/specs.html'">Specifications</a>
+              </li>
+            </ul>
+          </li>
+          <li class="active">
+            <a>Phase3</a>
+            <ul class="nav">
+              <li>
+                <a ng-click="template='views/costs.html'">Costs</a>
+              </li>
+              <li>
+                <a ng-click="template='views/sales.html'">Sales</a>
               </li>
 
             </ul>
-          </div>
+          </li>
+          <li class="active">
+            <a>Phase4</a>
+            <ul class="nav">
+              <li>
+                <a ng-click="template='views/opinion.html'">Expert Opinion</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="bs-docs-section">
+        <div class="page-header">
+          <h1> Heading</h1>
         </div>
-        <div class="col-md-9">
-          <div class="bs-docs-section">
-            <div class="page-header">
-              <h1>Overview</h1>
-            </div>
-            <div class="container">
-              <form class="form-horizontal" role="form">
-                <div class="form-group">
-                  <label for="inputEmail1" class="col-lg-2 control-label">Email</label>
-                  <div class="col-lg-10">
-                    <input type="email" class="form-control" id="inputEmail1" placeholder="Email">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="inputPassword1" class="col-lg-2 control-label">Password</label>
-                  <div class="col-lg-10">
-                    <input type="password" class="form-control" id="inputPassword1" placeholder="Password">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="inputPassword1" class="col-lg-2 control-label">Password</label>
-                  <div class="col-lg-10">
-                    <select name="country" id="country" class="form-control">
-		      <option value=""></option>
-		      <option value="AR">Argentina</option>
-		      <option value="AU">Australia</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="col-lg-offset-2 col-lg-10">
-                    <div class="checkbox">
-                      <label>
-                        <input type="checkbox"> Remember me
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="col-lg-offset-2 col-lg-10">
-                    <button type="submit" class="btn btn-default">Sign in</button>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
+        <div class="container">
+          <div ng-include src="template"></div>
         </div>
       </div>
     </div>
-    
-    <script src="//code.jquery.com/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-  </body>
-</html>
+  </div>
+</div>

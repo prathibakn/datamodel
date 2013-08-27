@@ -1,3 +1,4 @@
 'use strict';
 
-lopApp.value('localStorage', window.localStorage);
+angular.module('lopApp')
+.value('localStorage', window.localStorage);
