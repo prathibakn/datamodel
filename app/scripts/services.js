@@ -4,14 +4,12 @@ angular.module('lopApp')
          function(localStorage) {
              return{
              query: function(){
-                     console.log(localStorage);
                      return localStorage;
                  },
                      get: function(id){
                      return localStorage[id];
                  },
                      set: function(id,value){
-                     console.log("settt");
                      localStorage[id]=JSON.stringify(value);
                  }
              }
