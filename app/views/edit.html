@@ -3,40 +3,26 @@
     <div class="col-md-3">
       <div class="bs-sidebar hidden-print affix">
         <ul class="nav bs-sidenav">
-          <li class="active">
+          <li ng-class="{true: 'active', false: ''}[currentPhase == 'forecast']" >
             <a>Forecast</a>
           </li>
-          <li>
+          <li ng-class="{true: 'active', false: ''}[currentPhase == 'concept']">
             <a>Concept</a>
           </li>
-          <li>
+          <li ng-class="{true: 'active', false: ''}[currentPhase == 'marketstudy']">
             <a>Market Study</a>
           </li>
-          <li>
+          <li ng-class="{true: 'active', false: ''}[currentPhase == 'finalization']">
             <a>Finalization</a>
           </li>
         </ul>
 
         <ul class="nav">
-          <li class="active">
-            <a ng-click="template='views/overview.html'">Overview</a>
-          </li>
-          <li>
-            <a ng-click="template='views/attributes.html'">Attributes</a>
-          </li>
-          <li>
-            <a ng-click="template='views/specs.html'">Specifications</a>
-          </li>
-          <li>
-            <a ng-click="template='views/costs.html'">Costs</a>
-          </li>
-          <li>
-            <a ng-click="template='views/sales.html'">Sales</a>
-          </li>
-          <li>
-            <a ng-click="template='views/opinion.html'">Expert Opinion</a>
+          <li ng-repeat="(key,view) in views">
+            <a ng-class="{true: 'active', false: ''}[template=='views/'+view[1]]" ng-click="selectView(view[1])">{{view[0]}} {{template}} {{view[1]}}</a>
           </li>
         </ul>
+
       </div>
     </div>
     <div class="col-md-9">
@@ -45,6 +31,7 @@
           <h1> Heading</h1>
         </div>
         <div class="container">
+          <p>{{template}}</p>
           <div ng-include src="template"></div>
         </div>
       </div>

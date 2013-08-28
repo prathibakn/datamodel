@@ -2,8 +2,29 @@
 
 angular.module('lopApp')
 .constant('lopSettings', {
-    mapping: {forecast: ["overview", "attributes"], concept: ["specs"], marketstudy: ["costs", "sales"], finalization: ["opinion"]} 
-});
+    map: {forecast: ["overview.html", "attributes.html"],
+                concept: ["specs.html"],
+                marketstudy: ["costs.html", "sales.html"],
+                finalization: ["opinion.html"]
+                } ,
+            viewMap: {forecast: {1: ["Overview","overview.html"],2: ["Attributes","attributes.html"]},
+                concept: {1: ["Overview", "overview.html"],
+                    2: ["Attributes","attributes.html"],
+                    3: ["Specifications", "specs.html"]},
+                marketstudy: {1: ["Overview", "overview.html"],
+                    2: ["Attributes","attributes.html"],
+                    3: ["Specifications", "specs.html"],
+                    4: ["Costs", "coss.html"],
+                    5: ["Sales", "sales.html"]},
+                finalization: {1: ["Overview", "overview.html"],
+                    2: ["Attributes","attributes.html"],
+                    3: ["Specifications", "specs.html"],
+                    4: ["Costs", "coss.html"],
+                    5: ["Sales", "sales.html"],
+                    6: ["Expert Opinion", "opinion.html"]}
+        }
+    });
+
 angular.module('lopApp')
 .controller('ListCtrl', function ($scope) {
     });
@@ -11,22 +32,30 @@ angular.module('lopApp')
 .controller('EditCtrl', function ($scope, $routeParams, lopSettings, Initiative) {
         $scope.template="";
         $scope.currentPhase="";
-        console.log(lopSettings.mapping);
+        $scope.views="";
         $scope.setTemplate = function(temp){
-            $scope.template = "views/" + temp;
+            $scope.template = 'views/'+temp;
+        };
+        $scope.setViews = function(phase){
+            $scope.views=lopSettings.viewMap[phase];    
+        };
+        $scope.selectView = function(view){
+            $scope.setTemplate(view);
         }
-
         var obj = Initiative.get($routeParams.id);
         if(obj === undefined){
             $scope.currentPhase="forecast";
-            $scope.setTemplate("overview.html");
         }
         else{
             $scope.currentPhase = JSON.parse(obj).phase;
-            console.log(lopSettings.mapping);
+            console.log(lopSettings.map);
             console.log($scope.currentPhase);
-            $scope.setTemplate(lopSettings.mapping[$scope.currentPhase][0]);
         }
+        $scope.setViews($scope.currentPhase);
+        console.log($scope.views);
+                                      
+        $scope.setTemplate(lopSettings.map[$scope.currentPhase][0]);
+
     });
 angular.module('lopApp')
 .controller('OverviewCtrl', function ($scope, $routeParams, Initiative) {
@@ -49,6 +78,8 @@ angular.module('lopApp')
             json_object["attributes"] = $scope.attributes;
             Initiative.set(id,json_object);
             $scope.setTemplate("specs.html");
+            $scope.setViews("concept");
+            
         };
     });
 angular.module('lopApp')
@@ -62,6 +93,7 @@ angular.module('lopApp')
             Initiative.set(id,json_object);
             
             $scope.setTemplate("costs.html");
+
         };
     });
 angular.module('lopApp')
