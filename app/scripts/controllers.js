@@ -14,12 +14,12 @@ angular.module('lopApp')
                 marketstudy: {1: ["Overview", "overview.html"],
                     2: ["Attributes","attributes.html"],
                     3: ["Specifications", "specs.html"],
-                    4: ["Costs", "coss.html"],
+                    4: ["Costs", "costs.html"],
                     5: ["Sales", "sales.html"]},
                 finalization: {1: ["Overview", "overview.html"],
                     2: ["Attributes","attributes.html"],
                     3: ["Specifications", "specs.html"],
-                    4: ["Costs", "coss.html"],
+                    4: ["Costs", "costs.html"],
                     5: ["Sales", "sales.html"],
                     6: ["Expert Opinion", "opinion.html"]}
         }
@@ -30,6 +30,9 @@ angular.module('lopApp')
         $scope.initiatives=Initiative.query();
         $scope.create = function(){
             $location.path("/initiative/"+(Object.keys($scope.initiatives).length+1));
+        };
+        $scope.edit = function(id){
+            $location.path("/initiative/"+id);  
         }
     });
 angular.module('lopApp')
@@ -46,25 +49,21 @@ angular.module('lopApp')
         $scope.selectView = function(view){
             $scope.setTemplate(view);
         }
-        var obj = Initiative.get($routeParams.id);
-        if(obj === undefined){
+        $scope.obj = (Initiative.get($routeParams.id) === undefined) ? undefined : JSON.parse(Initiative.get($routeParams.id));
+        if($scope.obj === undefined){
             $scope.currentPhase="forecast";
         }
         else{
-            $scope.currentPhase = JSON.parse(obj).phase;
-            console.log(lopSettings.map);
-            console.log($scope.currentPhase);
+            $scope.currentPhase = $scope.obj.phase;
         }
         $scope.setViews($scope.currentPhase);
-        console.log($scope.views);
-                                      
         $scope.setTemplate(lopSettings.map[$scope.currentPhase][0]);
 
     });
 angular.module('lopApp')
 .controller('OverviewCtrl', function ($scope, $routeParams, Initiative) {
         var id = $routeParams.id;
-        $scope.overview = {};
+        $scope.overview = ($scope.obj === undefined) ? {} : $scope.obj.overview;
         $scope.create = function(){
             $scope.initiation = {};
             $scope.initiation.overview = $scope.overview;
@@ -76,7 +75,7 @@ angular.module('lopApp')
 angular.module('lopApp')
 .controller('AttributesCtrl', function ($scope, $routeParams, Initiative) {
         var id = $routeParams.id;
-        $scope.attributes = {};
+        $scope.attributes = ($scope.obj === undefined) ? {} : $scope.obj.attributes;
         $scope.create = function(){
             var json_object = JSON.parse(Initiative.get(id));
             json_object["attributes"] = $scope.attributes;
@@ -92,12 +91,12 @@ angular.module('lopApp')
         $scope.specs = {};
         $scope.create = function(){
             var json_object = JSON.parse(Initiative.get(id));
-            json_object["attributes"] = $scope.attributes;
-            json_object["phase"] = "phase2";
+            json_object["specs"] = $scope.specs;
+            json_object["phase"] = "concept";
             Initiative.set(id,json_object);
-            
             $scope.setTemplate("costs.html");
-
+            $scope.setViews("marketstudy");
+            
         };
     });
 angular.module('lopApp')
@@ -105,7 +104,12 @@ angular.module('lopApp')
         var id = $routeParams.id;
         $scope.costs = {};
         $scope.create = function(){
+            var json_object = JSON.parse(Initiative.get(id));
+            json_object["costs"] = $scope.costss;
+            json_object["phase"] = "marketstudy";
+            Initiative.set(id,json_object);
             $scope.setTemplate("sales.html");
+            $scope.setViews("marketstudy");
         };
     });
 angular.module('lopApp')
@@ -113,15 +117,23 @@ angular.module('lopApp')
         var id = $routeParams.id;
         $scope.sales = {};
         $scope.create = function(){
+            var json_object = JSON.parse(Initiative.get(id));
+            json_object["sales"] = $scope.sales;
+            json_object["phase"] = "marketstudy";
+            Initiative.set(id,json_object);
             $scope.setTemplate("opinion.html");
+            $scope.setViews("finalization");
         };
     });
 angular.module('lopApp')
-.controller('ExpertOpinionCtrl', function ($scope, $routeParams, Initiative) {
+.controller('OpinionCtrl', function ($scope, $routeParams, Initiative) {
         var id = $routeParams.id;
         $scope.opinion = {};
         $scope.create = function(){
-            
+            var json_object = JSON.parse(Initiative.get(id));
+            json_object["opinion"] = $scope.opinion;
+            json_object["phase"] = "finalization";
+            Initiative.set(id,json_object);
         };
     });
 

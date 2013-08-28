@@ -1,7 +1,7 @@
 <div class="container bs-docs-container" ng-controller="ListCtrl">
   <div class="row">
     <div class="col-md-9">
-      <div class="bs-example">
+      <div class="">
         <button type="button" class="btn btn-primary pull-right" ng-click="create()">Start Initiative</button>
         <table class="table table-striped">
           <thead>
@@ -12,10 +12,18 @@
             </tr>
           </thead>
           <tbody>
-            <tr ng-repeat="(key,value) in initiatives">
+            <tr ng-repeat="(key,value) in initiatives" ng-click="edit(key)">
               <td>{{value.overview.code}}</td>
               <td>{{value.overview.email}}</td>
               <td>{{value.overview.name}}</td>
+              <td>
+                <div class="btn-group">
+                  <button ng-class="{true: 'btn btn-warning', false: 'btn btn-default'}[value.phase=='forecast']">Forecast</button>
+                  <button ng-class="{true: 'btn btn-warning', false: 'btn btn-default'}[value.phase=='concept']">Concept</button>
+                  <button ng-class="{true: 'btn btn-warning', false: 'btn btn-default'}[value.phase=='marketstudy']">Market Study</button>
+                  <button ng-class="{true: 'btn btn-warning', false: 'btn btn-default'}[value.phase=='finalization']">Finalization</button>
+                </div>
+              </td>
             </tr>
           </tbody>
         </table>
