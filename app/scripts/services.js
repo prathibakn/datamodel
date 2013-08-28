@@ -4,7 +4,11 @@ angular.module('lopApp')
          function(localStorage) {
              return{
              query: function(){
-                     return localStorage;
+                     var obj={};
+                     for(var k in localStorage){
+                         obj[k]=JSON.parse(localStorage[k]);
+                     }
+                     return obj;
                  },
                      get: function(id){
                      return localStorage[id];

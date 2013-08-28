@@ -26,7 +26,11 @@ angular.module('lopApp')
     });
 
 angular.module('lopApp')
-.controller('ListCtrl', function ($scope) {
+.controller('ListCtrl', function ($scope, $location, Initiative) {
+        $scope.initiatives=Initiative.query();
+        $scope.create = function(){
+            $location.path("/initiative/"+(Object.keys($scope.initiatives).length+1));
+        }
     });
 angular.module('lopApp')
 .controller('EditCtrl', function ($scope, $routeParams, lopSettings, Initiative) {
@@ -61,10 +65,10 @@ angular.module('lopApp')
 .controller('OverviewCtrl', function ($scope, $routeParams, Initiative) {
         var id = $routeParams.id;
         $scope.overview = {};
-        $scope.initiation = {};
         $scope.create = function(){
+            $scope.initiation = {};
             $scope.initiation.overview = $scope.overview;
-            $scope.inititation.phase = "forecast";
+            $scope.initiation.phase= "forecast";
             Initiative.set(id,$scope.initiation);
             $scope.setTemplate("attributes.html");
         };

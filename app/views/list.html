@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-9">
       <div class="bs-example">
-        <button type="button" class="btn btn-primary pull-right">Primary</button>
+        <button type="button" class="btn btn-primary pull-right" ng-click="create()">Start Initiative</button>
         <table class="table table-striped">
           <thead>
             <tr>
@@ -12,17 +12,11 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td><input type="checkbox" value=1\></td>
-              <td><a href="#">A<a></td>
-              <td>B</td>
+            <tr ng-repeat="(key,value) in initiatives">
+              <td>{{value.overview.code}}</td>
+              <td>{{value.overview.email}}</td>
+              <td>{{value.overview.name}}</td>
             </tr>
-            <tr>
-              <td>2</td>
-              <td>B</td>
-              <td>C</td>
-            </tr>
-
           </tbody>
         </table>
       </div>
