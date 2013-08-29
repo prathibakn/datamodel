@@ -1,28 +1,38 @@
-
-<form class="form-horizontal" role="form" ng-controller="AttributesCtrl">
+<form class="form-horizontal" name="aForm" role="form" ng-controller="AttributesCtrl">
   <h4>Attributes:</h4>
   <div class="form-group">
-    <label for="inputEmail1" class="col-lg-2 control-label">Code</label>
+    <label for="inputEmail1" class="col-lg-2 control-label">Type</label>
     <div class="col-lg-10">
-      <input type="text" class="form-control" ng-model="attributes.code"/>
+      <input ng-model="attributes.type" value="suv" type="radio">SUV
+      <input ng-model="attributes.type" value="sedan" type="radio">Sedan
     </div>
   </div>
 
   <div class="form-group">
-    <label for="inputEmail1" class="col-lg-2 control-label">Email</label>
+    <label for="inputEmail1" class="col-lg-2 control-label">Horse Power</label>
     <div class="col-lg-10">
-      <input type="email" class="form-control" ng-model="attributes.email" placeholder="Email"/>
+      <input type="number" class="form-control" name="hp" ng-model="attributes.hp" required/>
+      <span class="help-inline" ng-show="aForm.hp.$error.required">Required</span>
     </div>
   </div>
+
   <div class="form-group">
-    <label for="inputPassword1" class="col-lg-2 control-label">name</label>
+    <label for="inputEmail1" class="col-lg-2 control-label">Fuel</label>
     <div class="col-lg-10">
-      <input type="date" class="form-control" ng-model="attributes.name"/>
+      <input ng-model="attributes.fuel" value="petrol" type="radio">Petrol
+      <input ng-model="attributes.fuel" value="diesel" type="radio">Diesel
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="inputEmail1" class="col-lg-2 control-label">Mileage(km/hr)</label>
+    <div class="col-lg-10">
+      30<input type="range" ng-model="attributes.mileage" min="30" max="80"/>80
     </div>
   </div>
   <div class="form-group">
     <div class="col-lg-offset-2 col-lg-10">
-      <button type="submit" class="btn btn-default" ng-click="create()">Save</button>
+      <button type="submit" class="btn btn-success" ng-click="create()" ng-disabled="!aForm.$valid">Save</button>
     </div>
   </div>
 </form>

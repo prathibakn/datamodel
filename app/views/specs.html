@@ -1,24 +1,33 @@
 <form class="form-horizontal" role="form" ng-controller="SpecsCtrl">
   <h4>Specs:</h4>
   <div class="form-group">
-    <label for="inputEmail1" class="col-lg-2 control-label">Code</label>
+    <label for="inputEmail1" class="col-lg-2 control-label">Gearbox</label>
     <div class="col-lg-10">
-      <input type="text" class="form-control" ng-model="specs.code"/>
+      <select class="form-control" ng-model="specs.gear">
+        <option value="manual">Manual</option>
+        <option value="automatic">Automatic</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputEmail1" class="col-lg-2 control-label">Length</label>
+    <div class="col-lg-10">
+      <input type="number" class="form-control" ng-model="specs.length"/>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword1" class="col-lg-2 control-label">Width</label>
+    <div class="col-lg-10">
+      <input type="number" class="form-control" ng-model="specs.width"/>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword1" class="col-lg-2 control-label">Displacement(cc)</label>
+    <div class="col-lg-10">
+      <input type="number" class="form-control" ng-model="specs.cc"/>
     </div>
   </div>
 
-  <div class="form-group">
-    <label for="inputEmail1" class="col-lg-2 control-label">Email</label>
-    <div class="col-lg-10">
-      <input type="email" class="form-control" ng-model="specs.email" placeholder="Email"/>
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="inputPassword1" class="col-lg-2 control-label">name</label>
-    <div class="col-lg-10">
-      <input type="date" class="form-control" ng-model="specs.name"/>
-    </div>
-  </div>
   <div class="form-group">
     <div class="col-lg-offset-2 col-lg-10">
       <button type="submit" class="btn btn-default" ng-click="create()">Save</button>
