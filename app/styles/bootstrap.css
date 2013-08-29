@@ -3776,7 +3776,9 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .nav {
   padding-left: 0;
   margin-bottom: 0;
-  list-style: none;
+    list-style: none;
+    border-radius: 5px;
+ border: 1px solid #563D7C;
 }
 
 .nav:before,
