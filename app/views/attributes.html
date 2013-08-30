@@ -1,4 +1,5 @@
-<form class="form-horizontal" name="aForm" role="form" ng-controller="AttributesCtrl">
+<div ng-show="edit" ng-controller="AttributesCtrl">
+<form class="form-horizontal" name="aForm" role="form">
   <h4>Attributes:</h4>
   <div class="form-group">
     <label for="inputEmail1" class="col-lg-2 control-label">Type</label>
@@ -36,3 +37,36 @@
     </div>
   </div>
 </form>
+</div>
+<div ng-show="view" ng-controller="AttributesCtrl">
+<form class="form-horizontal" role="form">
+  <h4>Attributes:</h4>
+  <div class="form-group">
+    <label for="inputEmail1" class="col-lg-2 control-label">Type</label>
+    <div class="col-lg-10">
+      {{attributes.type}}
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="inputEmail1" class="col-lg-2 control-label">Horse Power</label>
+    <div class="col-lg-10">
+      {{attributes.hp}}
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="inputEmail1" class="col-lg-2 control-label">Fuel</label>
+    <div class="col-lg-10">
+      {{attributes.fuel}}
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="inputEmail1" class="col-lg-2 control-label">Mileage(km/hr)</label>
+    <div class="col-lg-10">
+      {{attributes.mileage}}
+    </div>
+  </div>
+</form>
+</div>

@@ -66,6 +66,8 @@ angular.module('lopApp')
 angular.module('lopApp')
 .controller('OverviewCtrl', function ($scope, $routeParams, Initiative) {
         var id = $routeParams.id;
+        $scope.view=true;
+        $scope.edit=false;
         $scope.obj = (Initiative.get($routeParams.id) === undefined) ? undefined : JSON.parse(Initiative.get($routeParams.id));
         $scope.overview = ($scope.obj === undefined) ? {} : $scope.obj.overview;
         $scope.setPhase("forecast");

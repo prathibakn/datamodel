@@ -1,5 +1,5 @@
-
-<form class="form-horizontal" role="form" ng-controller="CostsCtrl">
+<div ng-show="edit" ng-controller="CostsCtrl">
+<form class="form-horizontal" role="form">
   <h4>Costs:</h4>
   <div class="form-group">
     <label class="col-lg-2 control-label">Estimated Manufacturing Cost($)</label>
@@ -36,4 +36,35 @@
     </div>
   </div>
 </form>
+</div>
+<div ng-show="view" ng-controller="CostsCtrl">
+<form class="form-horizontal" role="form">
+  <h4>Costs:</h4>
+  <div class="form-group">
+    <label class="col-lg-2 control-label">Estimated Manufacturing Cost($)</label>
+    <div class="col-lg-10">
+      {{costs.mcost}}
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-lg-2 control-label">Estimated Production Cost($)</label>
+    <div class="col-lg-10">
+      {{costs.pcost}}
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="inputEmail1" class="col-lg-2 control-label">Target Location</label>
+    <div class="col-lg-10">
+      {{costs.location}}
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-lg-2 control-label">Green Score</label>
+    <div class="col-lg-10">
+      {{costs.score}}
+    </div>
+  </div>
+</form>
+</div>
 

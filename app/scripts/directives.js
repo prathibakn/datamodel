@@ -35,8 +35,6 @@ angular.module('lopApp')
                         text: 'Sales by Type'
                                 },
                             tooltip: {
-                            //pointFormat: '{series.name}: <b>{point.percentage}%</b>',
-                        percentageDecimals: 1
                                 },
                             xAxis:{categories: ['2011', '2012', '2013']},
                             plotOptions: {

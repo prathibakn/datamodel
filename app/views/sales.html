@@ -1,4 +1,5 @@
-<form class="form-horizontal" role="form" ng-controller="SalesCtrl">
+<div ng-show="edit"  ng-controller="SalesCtrl">
+<form class="form-horizontal" role="form">
   <h4>Sales:</h4>
   <div class="form-group">
     <div class="col-lg-10">
@@ -74,4 +75,17 @@
     </div>
   </div>
 </form>
-  
+</div>
+
+<div ng-show="view"  ng-controller="SalesCtrl">
+<form class="form-horizontal" role="form">
+  <h4>Sales:</h4>
+  <div class="form-group">
+    <div class="col-lg-10">
+      <div class="hc-pie" items="sales">
+      </div>
+    </div>
+  </div>
+</form>
+</div>
+

@@ -1,4 +1,5 @@
-<form name="oForm" class="form-horizontal" role="form" ng-controller="OverviewCtrl">
+<div ng-show="edit"  ng-controller="OverviewCtrl">
+<form name="oForm" class="form-horizontal" role="form">
   <h4>Overview:</h4>
   <div class="form-group">
     <label class="col-lg-2 control-label">Code</label>
@@ -35,3 +36,36 @@
     </div>
   </div>
 </form>
+</div>
+
+<div ng-show="view"  ng-controller="OverviewCtrl">
+<form class="form-horizontal" role="form">
+  <h4>Overview:</h4>
+  <div class="form-group">
+    <label class="col-lg-2 control-label">Code</label>
+    <div class="col-lg-10">
+      {{overview.code}}
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-lg-2 control-label">Owner</label>
+    <div class="col-lg-10">
+      {{overview.owner}}
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-lg-2 control-label">Manager</label>
+    <div class="col-lg-10">
+      {{overview.manager}}
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-lg-2 control-label">Date</label>
+    <div class="col-lg-10">
+      {{overview.date}}
+    </div>
+  </div>
+</form>
+</div>
