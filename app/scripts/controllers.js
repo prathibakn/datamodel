@@ -159,6 +159,10 @@ angular.module('lopApp')
         };
     });
 
+
+
+
+
                         //                        resolve: {
                         //                    initiatives: function(MultiInitiativeLoader) {
                         //                            return AllInitiativesLoader();

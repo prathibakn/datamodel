@@ -14,16 +14,16 @@
         <tbody>
           <tr>
             <td>
-              <label class="col-lg-2 control-label">2011</label>
+              <label class="col-lg-2 control-label" >2011</label>
             </td>
             <td>
-              <input type="text" ng-model="sales.2011_suv"/>
+              <input type="number" ng-model="sales.2011_suv" integer/>
             </td>
             <td>
-              <input type="text" ng-model="sales.2011_sedan"/>
+              <input type="number" ng-model="sales.2011_sedan" integer/>
             </td>
             <td>
-              <input type="text" ng-model="sales.2011_hb"/>
+              <input type="number" ng-model="sales.2011_hb" integer/>
             </td>
 
           </tr>
@@ -32,34 +32,39 @@
               <label class="col-lg-2 control-label">2012</label>
             </td>
             <td>
-              <input type="text" ng-model="sales.2012_suv"/>
+              <input type="number" ng-model="sales.2012_suv" integer/>
             </td>
             <td>
-              <input type="text" ng-model="sales.2012_sedan"/>
+              <input type="number" ng-model="sales.2012_sedan" integer/>
             </td>
             <td>
-              <input type="text" ng-model="sales.2012_hb"/>
+              <input type="number" ng-model="sales.2012_hb" integer/>
             </td>
 
           </tr>
           <tr>
-            <td>
+             <td>
               <label class="col-lg-2 control-label">2013</label>
             </td>
             <td>
-              <input type="text" ng-model="sales.2013_suv"/>
+              <input type="number" ng-model="sales.2013_suv" integer/>
             </td>
             <td>
-              <input type="text" ng-model="sales.2013_sedan"/>
+              <input type="number" ng-model="sales.2013_sedan" integer/>
             </td>
             <td>
-              <input type="text" ng-model="sales.2013_hb"/>
+              <input type="number" ng-model="sales.2013_hb" integer/>
             </td>
 
           </tr>
 
         </tbody>
       </table>
+
+
+
+      <div class="hc-pie" items="sales"></div>
+
 
     </div>
   </div>
