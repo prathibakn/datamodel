@@ -22,7 +22,7 @@ angular.module('lopApp')
                     },
                 controller: function ($scope, $element, $attrs) {
             },
-                template: '<div id="container" style="margin: 0 auto">not working</div>',
+                template: '<div id="container" style="margin: 0 auto"></div>',
                 link: function (scope, element, attrs) {
                 var chart1 = new Highcharts.Chart({
                     chart: {
