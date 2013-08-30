@@ -13,6 +13,20 @@ angular.module('lopApp')
     });
 
 angular.module('lopApp')
+.directive("removeWithFadeInDirective", function() {
+    return function(scope, element, attrs) {
+        element.bind('click', function() {
+                $(element).parent().parent().fadeOut(1000, function() {
+                scope.$apply(function() {
+                    var obj = scope.$eval(attrs.removeWithFadeInDirective.split(",")[0]),
+                        array = scope.$eval(attrs.removeWithFadeInDirective.split(",")[1]);
+                    array.splice(obj, 1);
+                });
+            });
+        });
+    };
+});
+angular.module('lopApp')
 .directive('hcPie', function () {
         return {
             restrict: 'C',
@@ -58,10 +72,25 @@ angular.module('lopApp')
                                 ]
                             });
                 scope.$watch("items", function (newValue) {
-                        console.log(newValue);
-                        chart1.series[0].setData([newValue["2011_suv"],newValue["2012_suv"],newValue["2013_suv"]],true);
-                        chart1.series[1].setData([newValue["2011_sedan"],newValue["2012_sedan"], newValue["2013_sedan"]], true);
-                        chart1.series[2].setData([newValue["2011_hb"],newValue["2012_hb"], newValue["2013_hb"]], true);
+                        if(chart1.series !==undefined){
+                        $.each(chart1.series.reverse(), function(i) {
+                                if(chart1.series[i] !== undefined)
+                                    chart1.series[i].remove();
+                            });
+                        }
+                        chart1.addSeries({
+                            name: 'SUV',
+                                    data: [newValue["2011_suv"],newValue["2012_suv"],newValue["2013_suv"]]
+                                    },
+                                {
+                                name: 'Sedan',
+                                        data: [newValue["2011_sedan"],newValue["2012_sedan"], newValue["2013_sedan"]]
+                                        },
+                                {
+                                name: 'Hatchback',
+                                        data: [newValue["2011_hb"],newValue["2012_hb"], newValue["2013_hb"]]
+                                        });
+                        chart1.redraw();
                     }, true);
             }
         }

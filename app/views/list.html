@@ -1,24 +1,34 @@
 <div class="container bs-docs-container" ng-controller="ListCtrl">
   <div class="row">
-    <div class="col-md-9">
+    <div class="col-md-12">
       <div class="">
         <button type="button" class="btn btn-primary pull-right" ng-click="create()">Start Initiative</button>
         <br/>
         <table class="table table-striped">
           <thead>
+            <tr>
+              <td><h5><strong>Code</strong></h5></td>
+              <td><h5><strong>Owner</strong></h5></td>
+              <td><h5><strong>Date</strong></h5></td>
+              <td><h5><strong>Status</strong></h5></td>
+              <td></td>
+            </tr>
           </thead>
           <tbody>
-            <tr ng-repeat="(key,value) in initiatives" ng-click="edit(key)">
-              <td>{{value.overview.code}}</td>
+            <tr ng-repeat="(key,value) in initiatives">
+              <td  ng-click="edit(key)" class="clickable">{{value.overview.code}}</td>
               <td>{{value.overview.owner}}</td>
               <td>{{value.overview.date}}</td>
               <td>
                 <div class="btn-group">
-                  <button ng-class="{true: 'btn btn-warning', false: 'btn btn-default'}[value.phase=='forecast']">Forecast</button>
-                  <button ng-class="{true: 'btn btn-warning', false: 'btn btn-default'}[value.phase=='concept']">Concept</button>
-                  <button ng-class="{true: 'btn btn-warning', false: 'btn btn-default'}[value.phase=='marketstudy']">Market Study</button>
-                  <button ng-class="{true: 'btn btn-warning', false: 'btn btn-default'}[value.phase=='finalization']">Finalization</button>
+                  <button ng-class="{true: 'btn btn-warning', false: 'btn btn-default'}[value.phase=='forecast']" disabled>Forecast</button>
+                  <button ng-class="{true: 'btn btn-warning', false: 'btn btn-default'}[value.phase=='concept']" disabled>Concept</button>
+                  <button ng-class="{true: 'btn btn-warning', false: 'btn btn-default'}[value.phase=='marketstudy']" disabled>Market Study</button>
+                  <button ng-class="{true: 'btn btn-warning', false: 'btn btn-default'}[value.phase=='finalization']" disabled>Finalization</button>
                 </div>
+              </td>
+              <td>
+                <button type="button" class="btn btn-danger pull-right" remove-with-fade-in-directive="key" ng-click="remove(key)">Remove</button>
               </td>
             </tr>
           </tbody>

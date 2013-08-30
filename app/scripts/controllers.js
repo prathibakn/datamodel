@@ -33,10 +33,16 @@ angular.module('lopApp')
         };
         $scope.edit = function(id){
             $location.path("/initiative/"+id);  
-        }
+        };
+        $scope.remove = function(id){
+            Initiative.remove(id);
+        };
+
     });
 angular.module('lopApp')
-.controller('EditCtrl', function ($scope, $routeParams, lopSettings, Initiative) {
+.controller('EditCtrl', function ($scope, $location, $routeParams, lopSettings, Initiative) {
+        $scope.edit=true;
+
         $scope.template="";
         $scope.currentPhase="";
         $scope.views="";
@@ -52,11 +58,17 @@ angular.module('lopApp')
         $scope.setPhase = function(phase){
             $scope.currentPhase=phase;
         };
+        $scope.back = function(id){
+            $location.path("/");  
+        }
+
         $scope.obj = (Initiative.get($routeParams.id) === undefined) ? undefined : JSON.parse(Initiative.get($routeParams.id));
         if($scope.obj === undefined){
+            $scope.edit=true;
             $scope.currentPhase="forecast";
         }
         else{
+            $scope.edit=false;
             $scope.currentPhase = $scope.obj.phase;
         }
         $scope.setViews($scope.currentPhase);
@@ -66,8 +78,6 @@ angular.module('lopApp')
 angular.module('lopApp')
 .controller('OverviewCtrl', function ($scope, $routeParams, Initiative) {
         var id = $routeParams.id;
-        $scope.view=true;
-        $scope.edit=false;
         $scope.obj = (Initiative.get($routeParams.id) === undefined) ? undefined : JSON.parse(Initiative.get($routeParams.id));
         $scope.overview = ($scope.obj === undefined) ? {} : $scope.obj.overview;
         $scope.setPhase("forecast");
@@ -160,32 +170,3 @@ angular.module('lopApp')
             Initiative.set(id,json_object);
         };
     });
-
-
-
-
-
-                        //                        resolve: {
-                        //                    initiatives: function(MultiInitiativeLoader) {
-                        //                            return AllInitiativesLoader();
-                        //                        }
-                        //                    },
-
-
-                        //                        resolve: {
-                        //                    recipe: function(InitiativeLoader) {
-                        //                            return InitiativeLoader();
-                        //                        }
-                        //                    },
-
-
-
-/*
-            var json_object = JSON.parse(Initiative.get(5));
-            console.log(JSON.parse(Initiative.get(5)));
-            json_object.concept = $scope.overview;
-            Initiative.set(5,JSON.stringify(json_object));
-
-
-            console.log(JSON.parse(Initiative.get(5)));
-*/

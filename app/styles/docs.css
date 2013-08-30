@@ -1089,3 +1089,6 @@ h1[id] {
     background-color:grey;
  border: 2px;
  }
+.clickable{
+ cursor:pointer;
+ }

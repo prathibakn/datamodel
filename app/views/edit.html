@@ -30,8 +30,11 @@
         <div class="page-header">
           <h3>
             {{currentPhase}}
-            <button class="btn btn-default pull-right">Back</button>
-            <button class="btn btn-primary pull-right">Edit</button>
+            <button class="btn btn-default pull-right" ng-click="back()">Back</button>
+            <button class="btn btn-primary pull-right" ng-click="edit=!edit">
+              <span ng-show="!edit">Edit</span>
+              <span ng-show="edit">View</span>
+            </button>
           </h3>
         </div>
         <div class="container">

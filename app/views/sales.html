@@ -1,9 +1,9 @@
-<div ng-show="edit"  ng-controller="SalesCtrl">
+<div  ng-controller="SalesCtrl">
 <form class="form-horizontal" role="form">
   <h4>Sales:</h4>
   <div class="form-group">
     <div class="col-lg-10">
-      <table  class="table table-striped">
+      <table class="table table-striped" ng-show="edit">
         <thead>
           <tr>
             <th>Year</th>
@@ -69,23 +69,10 @@
 
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group" ng-show="edit">
     <div class="col-lg-offset-2 col-lg-10">
       <button type="submit" class="btn btn-default" ng-click="create()">Save</button>
     </div>
   </div>
 </form>
 </div>
-
-<div ng-show="view"  ng-controller="SalesCtrl">
-<form class="form-horizontal" role="form">
-  <h4>Sales:</h4>
-  <div class="form-group">
-    <div class="col-lg-10">
-      <div class="hc-pie" items="sales">
-      </div>
-    </div>
-  </div>
-</form>
-</div>
-

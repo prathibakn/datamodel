@@ -37,7 +37,7 @@
 </form>
 </div>
 
-<div ng-show="view"  ng-controller="SpecsCtrl">
+<div ng-show="!edit"  ng-controller="SpecsCtrl">
 <form class="form-horizontal" role="form">
   <h4>Specs:</h4>
   <div class="form-group">
@@ -49,7 +49,7 @@
   <div class="form-group">
     <label for="inputEmail1" class="col-lg-2 control-label">Length</label>
     <div class="col-lg-10">
-      {{specs.length}
+      {{specs.length}}
     </div>
   </div>
   <div class="form-group">
